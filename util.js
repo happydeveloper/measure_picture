@@ -1,3 +1,4 @@
+
 	var flag = 0;
 	// 클릭한 이후 두 점을 가져오는 함수
 	var cr = [];
@@ -52,7 +53,7 @@
 			});
 		if(event.currentTarget.id == "myCanvas"){
 			var canvas = document.getElementById("myCanvas");
-			draw_path(canvas, 0, 0, pos_x, pos_y); 
+			//draw_path(canvas, 0, 0, pos_x, pos_y); 
 				}
 			}
 			else

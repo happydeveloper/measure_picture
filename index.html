@@ -4,11 +4,9 @@
 	<meta charset=utf-8 />
 	<title>image measurement</title>
 	<script type="text/javascript" src="./util.js"></script>
-	<style type="text/css">
-	#result {
-		float:right;
-	}
-	</style>
+	<script type="text/javascript" src="./controller.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="layout.css">
 </head>
 <body>
 	<h1>Prototype</h1>
@@ -17,40 +15,25 @@
 	<div id="result">
 	</div>
 	<img id="measure_img" src="FTO_AL2O3_TiCl_m003.jpg" border="0" width="50%" height="50%" alt="2560, 1920" />
-	<script type="text/javascript">
-		
-		//save measure_values
-		var coordinates = [];
-
-		var pos_x;
-		var pos_y;
-
-		var img = document.getElementById('measure_img');	
-		
-		img.addEventListener('click', trace, false);
-	</script>
 	<canvas id="myCanvas" width="578" height="280"></canvas>
 	<button id="calibrate_ruler">calibarate ruler </button>
-	<script>
-	//button
-	var calibarate = document.getElementById("calibrate_ruler");
-	calibarate.addEventListener('click', get_two_point, false);
+	<script type="text/javascript">
+	//save measure_values
+	//common variable
+		var coordinates = [];
+		var pos_x;
+		var pos_y;
 	</script>
-    	<script>
-	      var canvas = document.getElementById('myCanvas');
- 	      var context = canvas.getContext('2d');
-	      var x = 0;
-	      var y = 0;
-	      var width = "377";
-	      var height = "280";
-	      var imageObj = new Image();
+	<script>
+	//controller_layer
+		controller_img_tag();
 
-	      imageObj.onload = function() {
-	      context.drawImage(imageObj, x, y, width, height);
-	      };
-      	     imageObj.src = 'FTO_AL2O3_TiCl_m003.jpg';
-		
-	     canvas.addEventListener('click', trace, false);
+		controller_btn_calibrate();
+	     
+	//MyCanvas
+		controller_canvas_tag();
+	
+			
     </script>
 </body>
 </html>
