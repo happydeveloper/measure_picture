@@ -14,7 +14,7 @@ function controller_btn_calibrate() {
 
 function controller_canvas_tag(){
 
-              var canvas = document.getElementById('myCanvas');
+          var canvas = document.getElementById('myCanvas');
  	      var context = canvas.getContext('2d');
 	      var x = 0;
 	      var y = 0;

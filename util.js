@@ -36,8 +36,35 @@
 
 			if(flag == 1){
 				if(cr.length == 2)
-					cr = []; //array flush 
+				{
+					cr = []; //array flush
+					controller_canvas_tag();
+					setTimeout(function() {
+						console.log("delay 200ms");
+					var canvas = document.getElementById("myCanvas");
+					//draw_path(canvas, 0, 0, pos_x, pos_y); 
+					draw_point(canvas, pos_x, pos_y, 2);	
+					}, 200);
+				}
+
 				cr.push({x : pos_x, y:pos_y});
+
+				if(event.currentTarget.id == "myCanvas"){
+					
+					var canvas = document.getElementById("myCanvas");
+					//두 점이 찍히면 그 때 점을 그은
+					if(cr.length == 2)
+						draw_path(canvas, cr[0].x, cr[0].y, cr[1].x, cr[1].y); 
+
+					draw_point(canvas, pos_x, pos_y, 2);
+					
+					
+				}
+				else
+				{//IE7이하에서 처리 로직
+
+				}		
+				
 				if(cr.length == 2) {
 					console.log(cr[0]);
 					console.log(cr[1]);
@@ -61,6 +88,20 @@
 
 			}
 	}
+	//점 찌기
+	function draw_point(Pcanvas, x, y, r)
+	{
+		var canvas = Pcanvas;
+		var context = canvas.getContext("2d");
+		
+		context.beginPath();
+		context.arc(x, y, r, 0, 2 * Math.PI, false);
+		context.fillStyle = 'red';
+		context.fill();
+		context.lineWidth=1;
+		context.strokeStyle = '#ffffff';
+		context.stroke();
+	}
 
 	//라인 그려주는 함수
 	function draw_path(Pcanvas, x, y,  x1,  y1) 
@@ -73,7 +114,7 @@
 
 		context.lineTo(x1, y1);
 
-		context.lineWidth = 5;
+		context.lineWidth = 0.5;
 		context.strokeStyle = 'red';
 		context.stroke();
 	}
