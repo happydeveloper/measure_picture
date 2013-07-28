@@ -9,16 +9,7 @@
 	<div id="image_area">
 	<p>this is imagearea</p>
 	<img id="measure_img" src="FTO_AL2O3_TiCl_m003.jpg" border="0" width="50%" height="50%" alt="2560, 1920" />
-	</div>
-
-	<div id="canvas">
-
-	</div>
-
 	<div id="result">
-		<canvas id="myCanvas" width="55%" height="55%" style="border:1px solid #d3d3d3;">
-		Your browser does not support the HTML5 canvas tag.
-		</canvas>		
 	</div>
 	<script type="text/javascript">
 		
@@ -45,7 +36,44 @@
 				result.innerHTML += "<p> x 좌표 : "+coordinate.x +" y 좌표 : " +coordinate.y +"</p>"; 
 			});
 		}, false);
+		
+		img.addEventListener('click', trace, false);
+	function trace(event)
+	{
+			if(img.addEventListener){
+			var x = event.pageX, y = event.pageY;
+			console.log(x-img.offsetLeft);
+			console.log(y-img.offsetTop);
+			
+			pos_x = x-img.offsetLeft;
+			pos_y = y-img.offsetTop;
+			var result = document.getElementById('result');
+
+			coordinates.push({ x : pos_x ,y : pos_y});
+			
+			result.innerHTML = "";
+			coordinates.forEach(function(coordinate){
+				result.innerHTML += "<p> x 좌표 : "+coordinate.x +" y 좌표 : " +coordinate.y +"</p>"; 
+			});
+			}
+	}
+	</script>
 
 	</script>
+	<canvas id="myCanvas" width="578" height="280"></canvas>
+    	<script>
+	      var canvas = document.getElementById('myCanvas');
+ 	      var context = canvas.getContext('2d');
+	      var x = 0;
+	      var y = 0;
+	      var width = "377";
+	      var height = "280";
+	      var imageObj = new Image();
+
+	      imageObj.onload = function() {
+	      context.drawImage(imageObj, x, y, width, height);
+	      };
+      	     imageObj.src = 'FTO_AL2O3_TiCl_m003.jpg';
+    </script>
 </body>
 </html>
