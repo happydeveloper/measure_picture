@@ -1,3 +1,25 @@
+	var flag = 0;
+	// 클릭한 이후 두 점을 가져오는 함수
+	var cr = [];
+	function get_two_point() {
+		console.log('entry funcion');
+		switch(flag) 
+		{
+			case 0:
+				flag = 1;
+				console.log('flag value state : '+flag);
+				alert('click start point of ruller on Canvas');
+			break;
+			
+			case 1:
+				flag = 0;
+			break;
+				
+			default:
+				alert('Error : code 001, unvalid fail');
+		}
+		console.log('end function');	
+	}
 
 	function trace(event)
 	{
@@ -10,6 +32,16 @@
 			pos_x = x-event.currentTarget.offsetLeft;
 			pos_y = y-event.currentTarget.offsetTop;
 			var result = document.getElementById('result');
+
+			if(flag == 1){
+				if(cr.length == 2)
+					cr = []; //array flush 
+				cr.push({x : pos_x, y:pos_y});
+				if(cr.lengh == 2) {
+					console.log(cr[0]);
+					console.loo(cr[1]);
+				}
+			}
 
 			coordinates.push({ x : pos_x ,y : pos_y});
 			

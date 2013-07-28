@@ -30,6 +30,12 @@
 		img.addEventListener('click', trace, false);
 	</script>
 	<canvas id="myCanvas" width="578" height="280"></canvas>
+	<button id="calibrate_ruler">calibarate ruler </button>
+	<script>
+	//button
+	var calibarate = document.getElementById("calibrate_ruler");
+	calibarate.addEventListener('click', get_two_point, false);
+	</script>
     	<script>
 	      var canvas = document.getElementById('myCanvas');
  	      var context = canvas.getContext('2d');
