@@ -37,9 +37,10 @@
 				if(cr.length == 2)
 					cr = []; //array flush 
 				cr.push({x : pos_x, y:pos_y});
-				if(cr.lengh == 2) {
+				if(cr.length == 2) {
 					console.log(cr[0]);
-					console.loo(cr[1]);
+					console.log(cr[1]);
+					distance_cal(cr[0].x, cr[0].y, cr[1].x, cr[1].y);
 				}
 			}
 
@@ -74,4 +75,11 @@
 		context.lineWidth = 5;
 		context.strokeStyle = 'red';
 		context.stroke();
+	}
+
+	function distance_cal(x1, y1, x2, y2)
+	{
+		var result = Math.pow((x2-x1),2) + Math.pow((y2-y1),2);
+		result = Math.sqrt(result); 	
+		console.log("distence" + result);
 	}
