@@ -3,14 +3,15 @@
 <head>
 	<meta charset=utf-8 />
 	<title>image measurement</title>
+	<script type="text/javascript" src="./util.js"></script>
 </head>
 <body>
 	<h1>Prototype</h1>
 	<div id="image_area">
 	<p>this is imagearea</p>
-	<img id="measure_img" src="FTO_AL2O3_TiCl_m003.jpg" border="0" width="50%" height="50%" alt="2560, 1920" />
 	<div id="result">
 	</div>
+	<img id="measure_img" src="FTO_AL2O3_TiCl_m003.jpg" border="0" width="50%" height="50%" alt="2560, 1920" />
 	<script type="text/javascript">
 		
 		//save measure_values
@@ -20,45 +21,8 @@
 		var pos_y;
 
 		var img = document.getElementById('measure_img');	
-		img.addEventListener('click', function(event) {
-			var x = event.pageX, y = event.pageY;
-			console.log(x-img.offsetLeft);
-			console.log(y-img.offsetTop);
-			
-			pos_x = x-img.offsetLeft;
-			pos_y = y-img.offsetTop;
-			var result = document.getElementById('result');
-
-			coordinates.push({ x : pos_x ,y : pos_y});
-			
-			result.innerHTML = "";
-			coordinates.forEach(function(coordinate){
-				result.innerHTML += "<p> x 좌표 : "+coordinate.x +" y 좌표 : " +coordinate.y +"</p>"; 
-			});
-		}, false);
 		
 		img.addEventListener('click', trace, false);
-	function trace(event)
-	{
-			if(img.addEventListener){
-			var x = event.pageX, y = event.pageY;
-			console.log(x-img.offsetLeft);
-			console.log(y-img.offsetTop);
-			
-			pos_x = x-img.offsetLeft;
-			pos_y = y-img.offsetTop;
-			var result = document.getElementById('result');
-
-			coordinates.push({ x : pos_x ,y : pos_y});
-			
-			result.innerHTML = "";
-			coordinates.forEach(function(coordinate){
-				result.innerHTML += "<p> x 좌표 : "+coordinate.x +" y 좌표 : " +coordinate.y +"</p>"; 
-			});
-			}
-	}
-	</script>
-
 	</script>
 	<canvas id="myCanvas" width="578" height="280"></canvas>
     	<script>
@@ -74,6 +38,8 @@
 	      context.drawImage(imageObj, x, y, width, height);
 	      };
       	     imageObj.src = 'FTO_AL2O3_TiCl_m003.jpg';
+		
+	     canvas.addEventListener('click', trace, false);
     </script>
 </body>
 </html>
