@@ -25,7 +25,7 @@ function controller_canvas_tag(){
 	      imageObj.onload = function() {
 	      context.drawImage(imageObj, x, y, width, height);
 	      };
-      	     imageObj.src = 'FTO_AL2O3_TiCl_m003.jpg';
+      	  imageObj.src = './img/FTO_AL2O3_TiCl_m003.jpg';
 		
 	     canvas.addEventListener('click', trace, false);
 }
