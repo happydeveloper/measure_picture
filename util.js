@@ -97,7 +97,9 @@
 	//2560, 1920
 	function Cal_ratio_img_win(actual_img_pixel_width, win_img_pixel_width)
 	{
+		document.getElementById("ruller_ration").value = actual_img_pixel_width / win_img_pixel_width;
 		return ratio_img_win = actual_img_pixel_width / win_img_pixel_width;
+
 	}
 	function wpxToipx(windows_pixcel_measure_distance, ratio_img_win){
 		//actual image width pixel/canvas image width pixel
