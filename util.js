@@ -13,6 +13,7 @@
 		console.log('entry funcion');
 		switch(flag) 
 		{
+		//두점간에 기준점을 측정한다.
 			case 0:
 				flag = 1;
 				console.log('flag value state : '+flag);
@@ -22,81 +23,33 @@
 			case 1:
 				flag = 0;
 			break;
-				
+		//측정한다.
+
+			
 			default:
 				alert('Error : code 001, unvalid fail');
 		}
 		console.log('end function');	
 	}
 
-	function trace(event)
-	{
-			if(event.currentTarget.addEventListener){
-			// W3C DOM
-			var x = event.pageX, y = event.pageY;
-			console.log(x-event.currentTarget.offsetLeft);
-			console.log(y-event.currentTarget.offsetTop);
-			
-			pos_x = x-event.currentTarget.offsetLeft;
-			pos_y = y-event.currentTarget.offsetTop;
-			
-//로직의 분리 필요
-			var result = document.getElementById('result');
+	//두 점간에 실제 점을 표시하도록 
+	function get_two_point_actual() {
+		console.log('entry function - get_two_point_actual');
+		switch(flag)
+		{
+			case 2:
+				flag = 3;
+			break;
+			case 3: 
+				flag = 4;
+			break;
 
-			if(flag == 1){
-				if(cr.length == 2)
-				{
-					cr = []; //array flush
-					controller_canvas_tag();
-					setTimeout(function() {
-						console.log("delay 200ms");
-					var canvas = document.getElementById("myCanvas");
-					//draw_path(canvas, 0, 0, pos_x, pos_y); 
-					draw_point(canvas, pos_x, pos_y, 2);	
-					}, 200);
-				}
-
-				cr.push({x : pos_x, y:pos_y});
-
-				if(event.currentTarget.id == "myCanvas"){
-					
-					var canvas = document.getElementById("myCanvas");
-					//두 점이 찍히면 그 때 점을 그은
-					if(cr.length == 2)
-						draw_path(canvas, cr[0].x, cr[0].y, cr[1].x, cr[1].y); 
-
-					draw_point(canvas, pos_x, pos_y, 2);
-					
-					
-				}
-				else
-				{//IE7이하에서 처리 로직
-
-				}		
-				
-				if(cr.length == 2) {
-					console.log(cr[0]);
-					console.log(cr[1]);
-					distance_cal(cr[0].x, cr[0].y, cr[1].x, cr[1].y);
-				}
-			}
-
-			coordinates.push({ x : pos_x ,y : pos_y});
-			
-			result.innerHTML = "";
-			coordinates.forEach(function(coordinate){
-				result.innerHTML += "<p> x 좌표 : "+coordinate.x +" y 좌표 : " +coordinate.y +"</p>"; 
-			});
-		if(event.currentTarget.id == "myCanvas"){
-			var canvas = document.getElementById("myCanvas");
-			//draw_path(canvas, 0, 0, pos_x, pos_y); 
-				}
-			}
-			else
-			{//IE7이하에서 처리 로직
-
-			}
+			default:
+				console.log('Error : code 002, uninvalid faile');
+		}
+		console.log('end function');
 	}
+
 	//점 찌기
 	function draw_point(Pcanvas, x, y, r)
 	{
@@ -134,6 +87,11 @@
 		var result = Math.pow((x2-x1),2) + Math.pow((y2-y1),2);
 		result = Math.sqrt(result); 	
 		console.log("distence" + result);
+		var display_base = document.getElementById("ruller_base");
+		display_base.value = result;
+
+	
+ 		ratio_imgRul_winRul = Cal_ratio_img_win(2560, result);
 	}
 
 	//2560, 1920

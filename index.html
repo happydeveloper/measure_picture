@@ -19,9 +19,11 @@
 	<img id="measure_img" src="./img/FTO_AL2O3_TiCl_m003.jpg" border="0" width="50%" height="50%" alt="2560, 1920" />
 	<canvas id="myCanvas" width="578" height="280"></canvas>
 	<button id="calibrate_ruler">calibarate ruler </button>
-
 		
 	<input id="actual_ruller_distance" type="text" />
+	
+	<button id="measure_distance">measure_distance</button>
+
 	<form>
 		<input type="radio" name="unit" id="u" value="u">meter<br>
 		<input type="radio" name="unit" id="cm" value="u1">centi meter<br>
@@ -38,6 +40,8 @@
 		</ul> 
 	<div>
 	<div id="result_disply">
+		측정한 원도우  : <input type="text" id="ruller_base" ><br>
+		실제 거리 표시 : <input type="text" id="display_actural"><br>
 	</div>
 	<script type="text/javascript">
 	//save measure_values
